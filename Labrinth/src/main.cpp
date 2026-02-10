@@ -210,6 +210,8 @@ int main() {
 		watermark();
 
 		try {
+			Labrinth::UE::Init();
+			
 			auto players = Labrinth::UE::GWorld
 				->GameState
 				->PlayerArray;
@@ -233,9 +235,17 @@ int main() {
 				}
 			}
 
-			localPlayerState->InventoryComponent->CurrentWeapon->AccuracyHip = 0.0f;
-			localPlayerState->InventoryComponent->CurrentWeapon->CurrentSpread = 0.0f;
-			localPlayerState->InventoryComponent->CurrentWeapon->GunUpRecoil = 0.0f;
+			const auto gun = localPlayerState->InventoryComponent->CurrentGun;
+
+			gun->TimeBetweenShots = 0.01f;
+			gun->AccuracyHip = 0.0f;
+			gun->CurrentSpread = 0.0f;
+			gun->GunUpRecoil = 0.0f;
+			
+			gun->CurrentMagazineAmmo = gun->MaxMagazineAmmo;
+			gun->CurrentStockAmmo = gun->MaxStockAmmo;
+			
+			gun->GunShootingType = Labrinth::UE::EGunShootingType::AUTO;
 
 			for (auto player : players) {
 				auto pawn = player->PawnPrivate;
