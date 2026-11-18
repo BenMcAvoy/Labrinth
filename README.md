@@ -9,3 +9,7 @@ Open `Labrinth.sln` in Visual Studio and build the x64 configuration. The soluti
 ## Status
 
 This is a game-specific research scaffold. Its data layouts and offsets are version-dependent, and the project is not a general Unreal Engine SDK or a released overlay tool.
+
+## Defensive analysis
+
+See [DEFENSIVE_ANALYSIS.md](DEFENSIVE_ANALYSIS.md) for a discussion of client trust boundaries and privileged access. It is a design note, not a driver audit or a tested game defense.
